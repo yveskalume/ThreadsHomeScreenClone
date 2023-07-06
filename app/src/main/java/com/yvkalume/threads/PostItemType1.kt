@@ -1,5 +1,6 @@
 package com.yvkalume.threads
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -36,15 +37,21 @@ import com.yvkalume.threads.ui.theme.ThreadsTheme
 
 
 @Composable
-fun PostItemType1(modifier: Modifier = Modifier) {
+fun PostItemType1(
+    userName: String,
+    @DrawableRes avatar: Int,
+    description: String,
+    @DrawableRes image: Int,
+    time: String,
+    modifier: Modifier = Modifier
+) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
-            .padding(16.dp)
             .height(IntrinsicSize.Max)
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Avatar(modifier = Modifier.size(50.dp))
+            Avatar(modifier = Modifier.size(40.dp), painter = painterResource(id = avatar))
             Box(
                 modifier = Modifier
                     .padding(top = 8.dp)
@@ -58,7 +65,7 @@ fun PostItemType1(modifier: Modifier = Modifier) {
                 contentScale = ContentScale.FillHeight,
                 modifier = Modifier
                     .background(color = Color.Transparent)
-                    .padding(end = 15.dp)
+                    .padding(end = 14.dp)
             )
         }
 
@@ -67,10 +74,10 @@ fun PostItemType1(modifier: Modifier = Modifier) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.Top,
             ) {
-                Text(text = "kalumeyves", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                Text(text = userName, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = "17m",
+                    text = time,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Light,
                     color = Color.Gray,
@@ -82,10 +89,10 @@ fun PostItemType1(modifier: Modifier = Modifier) {
                     modifier = Modifier.size(18.dp)
                 )
             }
-            Text(text = stringResource(id = R.string.post1), fontSize = 14.sp)
+            Text(text = description, fontSize = 14.sp)
 
             Image(
-                painter = painterResource(id = R.drawable.image1),
+                painter = painterResource(id = image),
                 contentDescription = null,
                 modifier = Modifier.clip(RoundedCornerShape(12.dp))
             )
@@ -162,6 +169,12 @@ fun PostItemType1(modifier: Modifier = Modifier) {
 @Composable
 fun PostItemType1Preview() {
     ThreadsTheme {
-        PostItemType1()
+        PostItemType1(
+            userName = "kalumeyves",
+            avatar = R.drawable.user1,
+            description = stringResource(id = R.string.post1),
+            image = R.drawable.image1,
+            time = "17h"
+        )
     }
 }

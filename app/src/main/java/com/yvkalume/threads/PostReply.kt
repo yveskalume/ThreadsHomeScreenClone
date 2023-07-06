@@ -19,7 +19,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,11 +30,11 @@ fun PostReply(modifier: Modifier = Modifier) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
-            .padding(16.dp)
+            .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
             .height(IntrinsicSize.Max)
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            CommentAvatar(painter = painterResource(id = R.drawable.user3), modifier = Modifier.size(50.dp))
+            CommentAvatar(painter = painterResource(id = R.drawable.user3), modifier = Modifier.size(40.dp))
         }
 
         Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -43,22 +42,22 @@ fun PostReply(modifier: Modifier = Modifier) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.Top,
             ) {
-                Text(text = "kalumeyves", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                Text(text = "rosadunkle", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = "17m",
+                    text = "5m",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Light,
                     color = Color.Gray,
                 )
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(4.dp))
                 Icon(
                     imageVector = Icons.Default.MoreHoriz,
                     contentDescription = null,
                     modifier = Modifier.size(18.dp)
                 )
             }
-            Text(text = "Hello worl", fontSize = 14.sp)
+            Text(text = "Hello world", fontSize = 14.sp)
 
             Spacer(modifier = Modifier.height(4.dp))
 

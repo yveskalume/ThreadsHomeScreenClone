@@ -25,12 +25,13 @@ import androidx.compose.ui.unit.dp
 import com.yvkalume.threads.ui.theme.ThreadsTheme
 
 @Composable
-fun Avatar(modifier: Modifier = Modifier) {
+fun Avatar(modifier: Modifier = Modifier,painter: Painter) {
     Box(modifier = modifier) {
         Surface(modifier = Modifier.matchParentSize(), shape = CircleShape) {
             Image(
-                painter = painterResource(id = R.drawable.user1),
-                contentDescription = null
+                painter = painter,
+                contentDescription = null,
+                contentScale = ContentScale.Crop
             )
         }
 
@@ -41,8 +42,8 @@ fun Avatar(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .clip(CircleShape)
                 .background(Color.Black)
-                .size(20.dp)
-                .padding(4.dp)
+                .size(15.dp)
+                .padding(3.dp)
                 .align(Alignment.BottomEnd)
         )
     }
@@ -65,6 +66,6 @@ fun CommentAvatar(painter: Painter, modifier: Modifier = Modifier, border: Borde
 @Composable
 fun AvatarPreview() {
     ThreadsTheme {
-        Avatar(modifier = Modifier.size(50.dp))
+        Avatar(modifier = Modifier.size(40.dp), painterResource(id = R.drawable.user1))
     }
 }

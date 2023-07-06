@@ -1,5 +1,6 @@
 package com.yvkalume.threads
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -32,7 +33,14 @@ import androidx.compose.ui.unit.sp
 import com.yvkalume.threads.ui.theme.ThreadsTheme
 
 @Composable
-fun PostItemType2(modifier: Modifier = Modifier) {
+fun PostItemType2(
+    userName: String,
+    @DrawableRes avatar: Int,
+    description: String,
+    @DrawableRes image: Int,
+    time: String,
+    modifier: Modifier = Modifier
+) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
@@ -40,7 +48,7 @@ fun PostItemType2(modifier: Modifier = Modifier) {
             .height(IntrinsicSize.Max)
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Avatar(modifier = Modifier.size(50.dp))
+            Avatar(painter = painterResource(id = avatar),modifier = Modifier.size(40.dp))
             Box(
                 modifier = Modifier
                     .padding(vertical = 8.dp)
@@ -57,14 +65,14 @@ fun PostItemType2(modifier: Modifier = Modifier) {
                         .align(Alignment.CenterStart)
                 )
                 CommentAvatar(
-                    painter = painterResource(id = R.drawable.user3),
+                    painter = painterResource(id = R.drawable.user2),
                     modifier = Modifier
                         .size(20.dp)
                         .align(Alignment.TopEnd)
                 )
 
                 CommentAvatar(
-                    painter = painterResource(id = R.drawable.user3),
+                    painter = painterResource(id = R.drawable.user4),
                     modifier = Modifier
                         .size(10.dp)
                         .align(Alignment.BottomCenter)
@@ -77,10 +85,10 @@ fun PostItemType2(modifier: Modifier = Modifier) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.Top,
             ) {
-                Text(text = "kalumeyves", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                Text(text = userName, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = "17m",
+                    text = time,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Light,
                     color = Color.Gray,
@@ -92,10 +100,10 @@ fun PostItemType2(modifier: Modifier = Modifier) {
                     modifier = Modifier.size(18.dp)
                 )
             }
-            Text(text = stringResource(id = R.string.post1), fontSize = 14.sp)
+            Text(text = description, fontSize = 14.sp)
 
             Image(
-                painter = painterResource(id = R.drawable.image1),
+                painter = painterResource(id = image),
                 contentDescription = null,
                 modifier = Modifier.clip(RoundedCornerShape(12.dp))
             )
@@ -148,6 +156,12 @@ fun PostItemType2(modifier: Modifier = Modifier) {
 @Composable
 fun PostItemType2Preview() {
     ThreadsTheme {
-        PostItemType2()
+        PostItemType2(
+            userName = "kalumeyves",
+            avatar = R.drawable.user1,
+            description = stringResource(id = R.string.post1),
+            image = R.drawable.image1,
+            time = "17h"
+        )
     }
 }
